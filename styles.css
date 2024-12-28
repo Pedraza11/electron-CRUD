@@ -1,0 +1,156 @@
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    background-color: #f4f7fc;
+    color: #333;
+  }
+  
+  h1 {
+    font-size: 2.5rem;
+    color: #4c63af;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Formulario */
+  form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 15px;
+  }
+  
+  form input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  form input:focus {
+    outline: none;
+    border-color: #4c63af;
+    box-shadow: 0 0 8px rgba(76, 99, 175, 0.5);
+  }
+  
+  form button {
+    padding: 12px;
+    font-size: 1.1rem;
+    background-color: #4c63af;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  form button:hover {
+    background-color: #3b4d8a;
+  }
+  
+  /* Tabla */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #4c63af;
+    color: white;
+    font-weight: bold;
+  }
+  
+  table td {
+    background-color: #f9f9f9;
+  }
+  
+  table td button {
+    padding: 8px 16px;
+    margin-right: 5px;
+    background-color: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  table td button:hover {
+    background-color: #e68900;
+  }
+  
+  table td button:nth-child(2) {
+    background-color: #f44336;
+  }
+  
+  table td button:nth-child(2):hover {
+    background-color: #e53935;
+  }
+  
+  /* Botón de cambiar estado */
+  table td button:nth-child(3) {
+    background-color: #2196F3;
+  }
+  
+  table td button:nth-child(3):hover {
+    background-color: #1976D2;
+  }
+  
+  /* Botón de detalles */
+  table td button:nth-child(4) {
+    background-color: #9C27B0;
+  }
+  
+  table td button:nth-child(4):hover {
+    background-color: #7B1FA2;
+  }
+  
+  /* Modal */
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 25px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    z-index: 10;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .modal input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+  }
+  
+  .modal button {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  

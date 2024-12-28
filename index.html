@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD de Productos</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
+</head>
+<body>
+  <h1>CRUD de Productos</h1>
+
+  <!-- Formulario para agregar o editar productos -->
+  <form id="product-form">
+    <input type="hidden" id="product-id">
+    <input type="text" id="nombre" placeholder="Nombre" required />
+    <input type="number" id="precio" placeholder="Precio" required />
+    <input type="number" id="cantidad" placeholder="Cantidad" required />
+    <button type="submit">Guardar</button>
+  </form>
+
+  <!-- Tabla de productos -->
+  <table id="product-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+        <th>Cliente</th>
+        <th>Periodo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <!-- Formulario de cambio de estado -->
+  <div id="status-form" class="modal hidden">
+    <h2>Cambiar estado</h2>
+    <input type="text" id="cliente" placeholder="Nombre del Cliente" required />
+    <input type="text" id="periodo" placeholder="Periodo de préstamo" required />
+    <button id="save-status">Guardar</button>
+    <button id="cancel-status">Cancelar</button>
+  </div>
+
+  <!-- Modal de detalles de producto -->
+  <div id="product-details-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>Detalles del Producto</h2>
+      <p><strong>Nombre:</strong> <span id="detail-name"></span></p>
+      <p><strong>Precio:</strong> $<span id="detail-price"></span></p>
+      <p><strong>Cantidad:</strong> <span id="detail-quantity"></span></p>
+      <p><strong>Estado:</strong> <span id="detail-status"></span></p>
+      <p><strong>Cliente:</strong> <span id="detail-client"></span></p>
+      <p><strong>Periodo:</strong> <span id="detail-period"></span></p>
+      <button id="close-details">Cerrar</button>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
