@@ -1,5 +1,8 @@
 # electron-CRUD
 --comandos para que corra en electron--
+
+
+
 npm init -y
 
 
