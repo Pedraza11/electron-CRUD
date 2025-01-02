@@ -32,6 +32,7 @@
     
     <div class="filter">
       <button id="vencimientoButton" onclick="filterByExpiration()">Filtrar por Vencimiento</button>
+      <button id="listarButton" onclick="listarProductos()">Listar Todos</button>
     </div>
   </div>
 
@@ -45,6 +46,7 @@
         <th>Cantidad</th>
         <th>Estado</th>
         <th>Cliente</th>
+        <th>Teléfono</th>
         <th>Periodo</th>
         <th>Acciones</th>
       </tr>
@@ -70,6 +72,7 @@
   <div id="status-form" class="modal hidden">
     <h2>Cambiar estado</h2>
     <input type="text" id="cliente" placeholder="Nombre del Cliente" required />
+    <input type="text" id="telefono" placeholder="Teléfono del Cliente" required />
     <input type="text" id="periodo" placeholder="Periodo de préstamo" required />
     <button id="save-status">Guardar</button>
     <button id="cancel-status">Cancelar</button>
@@ -84,6 +87,7 @@
       <p><strong>Cantidad:</strong> <span id="detail-quantity"></span></p>
       <p><strong>Estado:</strong> <span id="detail-status"></span></p>
       <p><strong>Cliente:</strong> <span id="detail-client"></span></p>
+      <p><strong>Teléfono:</strong> <span id="detail-phone"></span></p>
       <p><strong>Periodo:</strong> <span id="detail-period"></span></p>
       <button id="close-details">Cerrar</button>
     </div>

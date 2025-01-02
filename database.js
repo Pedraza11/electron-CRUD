@@ -17,35 +17,28 @@ knex.schema.hasTable('productos').then(async (exists) => {
       table.integer('cantidad');
       table.string('estado').defaultTo('disponible'); // Nueva columna
       table.string('cliente'); // Cliente
+      table.string('telefono'); // Teléfono del cliente
       table.string('periodo'); // Periodo de préstamo
     });
     console.log('Tabla "productos" creada.');
   } else {
     // Si la tabla ya existe, comprobamos si las columnas están presentes
     const tableInfo = await knex('productos').columnInfo();
-
-    // Verificar si las columnas 'estado', 'cliente' y 'periodo' existen, y agregarlas si no
-    if (!tableInfo.hasOwnProperty('estado')) {
+    if (!tableInfo.telefono) {
+      // Si la columna 'telefono' no existe, la agregamos
       await knex.schema.table('productos', (table) => {
-        table.string('estado').defaultTo('disponible');
+        table.string('telefono'); // Teléfono del cliente
       });
-      console.log('Columna "estado" agregada.');
+      console.log('Columna "telefono" agregada a la tabla "productos".');
     }
-    if (!tableInfo.hasOwnProperty('cliente')) {
+    if (!tableInfo.periodo) {
+      // Si la columna 'periodo' no existe, la agregamos
       await knex.schema.table('productos', (table) => {
-        table.string('cliente');
+        table.string('periodo'); // Periodo de préstamo
       });
-      console.log('Columna "cliente" agregada.');
-    }
-    if (!tableInfo.hasOwnProperty('periodo')) {
-      await knex.schema.table('productos', (table) => {
-        table.string('periodo');
-      });
-      console.log('Columna "periodo" agregada.');
+      console.log('Columna "periodo" agregada a la tabla "productos".');
     }
   }
-}).catch((error) => {
-  console.error('Error al verificar o crear la tabla:', error);
 });
 
 module.exports = knex;
