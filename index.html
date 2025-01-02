@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 </head>
 <body>
-  <h1>CRUD de Productos</h1>
+  <h1>Gestión de productos</h1>
 
   <!-- Formulario para agregar o editar productos -->
   <form id="product-form">
@@ -18,6 +18,22 @@
     <input type="number" id="cantidad" placeholder="Cantidad" required />
     <button type="submit">Guardar</button>
   </form>
+
+  <!-- Tabla de productos -->
+  <h2>Lista de Productos</h2>
+
+  <!-- Contenedor de filtros -->
+  <div class="filters-container">
+    <!-- Filtro de búsqueda y botón de vencimiento -->
+    <div class="filter">
+      <label for="searchInput">Buscar Producto:</label>
+      <input id="searchInput" type="text" placeholder="Buscar..." oninput="searchProducts()">
+    </div>
+    
+    <div class="filter">
+      <button id="vencimientoButton" onclick="filterByExpiration()">Filtrar por Vencimiento</button>
+    </div>
+  </div>
 
   <!-- Tabla de productos -->
   <table id="product-table">
@@ -34,6 +50,20 @@
       </tr>
     </thead>
     <tbody></tbody>
+  </table>
+
+  <!-- Tabla de resumen de cantidades por producto -->
+  <h2>Resumen de Cantidad por Producto</h2>
+  <table id="product-summary-table">
+    <thead>
+      <tr>
+        <th>Producto</th>
+        <th>Cantidad Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se llenarán los datos de los productos con su cantidad total -->
+    </tbody>
   </table>
 
   <!-- Formulario de cambio de estado -->
