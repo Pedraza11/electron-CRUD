@@ -53,12 +53,14 @@ ipcMain.handle('delete-product', async (event, id) => {
 });
 
 // Ruta para actualizar el estado del producto
-ipcMain.handle('update-status', async (event, id, cliente, telefono, periodo) => {
+ipcMain.handle('update-status', async (event, id, cliente, telefono, direccion, periodo, pago) => {
   return await knex('productos').where('id', id).update({
     estado: 'No disponible',
     cliente: cliente,
     telefono: telefono,
-    periodo: periodo
+    direccion: direccion,
+    periodo: periodo,
+    pago: pago
   });
 });
 
@@ -68,6 +70,8 @@ ipcMain.handle('unlock-product', async (event, id) => {
     estado: 'Disponible',
     cliente: '',
     telefono: '',
-    periodo: ''
+    direccion: '',
+    periodo: '',
+    pago: false
   });
 });

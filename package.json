@@ -1,21 +1,39 @@
 {
-  "name": "electron-crud",
+  "name": "stocl",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicación CRUD en Electron",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rimraf dist",
+    "build": "electron-builder"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "electron": "^33.2.1",
-    "electron-builder": "^25.1.8"
+    "electron-builder": "^25.1.8",
+    "rimraf": "^6.0.1"
   },
   "dependencies": {
     "electron-reload": "^2.0.0-alpha.1",
     "knex": "^3.1.0",
     "sqlite3": "^5.1.7"
+  },
+  "build": {
+    "appId": "com.myapp.id",
+    "win": {
+      "target": "nsis",
+      "icon": "path/to/your/icon.ico",
+      "sign": false,
+      "extraFiles": [
+        {
+          "from": "path/to/ffmpeg.dll",
+          "to": "ffmpeg.dll"
+        }
+      ]
+    }
   }
 }

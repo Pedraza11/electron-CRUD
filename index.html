@@ -19,9 +19,6 @@
     <button type="submit">Guardar</button>
   </form>
 
-  <!-- Tabla de productos -->
-  <h2>Lista de Productos</h2>
-
   <!-- Contenedor de filtros -->
   <div class="filters-container">
     <!-- Filtro de búsqueda y botón de vencimiento -->
@@ -37,6 +34,7 @@
   </div>
 
   <!-- Tabla de productos -->
+  <h2>Lista de Productos</h2>
   <table id="product-table">
     <thead>
       <tr>
@@ -48,6 +46,8 @@
         <th>Cliente</th>
         <th>Teléfono</th>
         <th>Periodo</th>
+        <th>Dirección</th>
+        <th>Pago</th>
         <th>Acciones</th>
       </tr>
     </thead>
@@ -73,7 +73,10 @@
     <h2>Cambiar estado</h2>
     <input type="text" id="cliente" placeholder="Nombre del Cliente" required />
     <input type="text" id="telefono" placeholder="Teléfono del Cliente" required />
+    <input type="text" id="direccion" placeholder="Dirección del Cliente" required />
     <input type="text" id="periodo" placeholder="Periodo de préstamo" required />
+    <label for="pago">Pago realizado:</label>
+    <input type="checkbox" id="pago" />
     <button id="save-status">Guardar</button>
     <button id="cancel-status">Cancelar</button>
   </div>

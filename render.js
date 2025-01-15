@@ -7,7 +7,9 @@ const searchInput = document.getElementById('searchInput'); // Campo de búsqued
 const statusForm = document.getElementById('status-form');
 const clienteInput = document.getElementById('cliente');
 const telefonoInput = document.getElementById('telefono'); // Campo de teléfono
+const direccionInput = document.getElementById('direccion'); // Campo de dirección
 const periodoInput = document.getElementById('periodo');
+const pagoInput = document.getElementById('pago'); // Campo de pago
 const saveStatusButton = document.getElementById('save-status');
 const cancelStatusButton = document.getElementById('cancel-status');
 
@@ -42,7 +44,6 @@ async function loadProducts() {
 // Renderizar productos en la tabla
 function renderProducts(products) {
   productTable.innerHTML = ''; // Limpiar la tabla de productos antes de cargar nuevos productos
-
   products.forEach((product) => {
     const row = document.createElement('tr');
 
@@ -55,16 +56,19 @@ function renderProducts(products) {
       <td>${product.cliente || ''}</td>
       <td>${product.telefono || ''}</td> <!-- Asegúrate de que el campo telefono se renderice correctamente -->
       <td>${product.periodo || ''}</td> <!-- Asegúrate de que el campo periodo se renderice correctamente -->
-      <td>
-        <button onclick="editProduct(${product.id})">Editar</button>
-        <button onclick="deleteProduct(${product.id})">Eliminar</button>
-        <button onclick="openStatusForm(${product.id})">Cambiar Estado</button>
-        <button onclick="unlockProduct(${product.id})">Desbloquear</button>
+      <td>${product.direccion || ''}</td> <!-- Asegúrate de que el campo direccion se renderice correctamente -->
+      <td>${product.pago ? 'Sí' : 'No'}</td> <!-- Asegúrate de que el campo pago se renderice correctamente -->
+      <td class="action-buttons">
+        <button class="edit" onclick="editProduct(${product.id})">Editar</button>
+        <button class="delete" onclick="deleteProduct(${product.id})">Eliminar</button>
+        <button class="status" onclick="openStatusForm(${product.id})">Alquilar</button>
+        <button class="unlock" onclick="unlockProduct(${product.id})">Devuelto</button>
       </td>
     `;
 
     productTable.appendChild(row);
-  });
+});
+
 }
 
 // Renderizar resumen de productos
@@ -200,7 +204,9 @@ async function editProduct(id) {
     document.getElementById('cantidad').value = product.cantidad;
     document.getElementById('cliente').value = product.cliente || '';
     document.getElementById('telefono').value = product.telefono || '';
+    document.getElementById('direccion').value = product.direccion || '';
     document.getElementById('periodo').value = product.periodo || '';
+    document.getElementById('pago').checked = product.pago || false;
   } catch (error) {
     console.error('Error al editar el producto:', error);
   }
@@ -223,11 +229,13 @@ function openStatusForm(id) {
 saveStatusButton.addEventListener('click', async () => {
   const cliente = clienteInput.value;
   const telefono = telefonoInput.value; // Obtener el valor del campo de teléfono
+  const direccion = direccionInput.value; // Obtener el valor del campo de dirección
   const periodo = periodoInput.value;
+  const pago = pagoInput.checked; // Obtener el valor del campo de pago
 
-  console.log("Guardando estado con cliente:", cliente, "teléfono:", telefono, "y periodo:", periodo); // Verificar datos del formulario
+  console.log("Guardando estado con cliente:", cliente, "teléfono:", telefono, "dirección:", direccion, "periodo:", periodo, "pago:", pago); // Verificar datos del formulario
 
-  await window.api.updateStatus(changingStatusId, cliente, telefono, periodo);
+  await window.api.updateStatus(changingStatusId, cliente, telefono, direccion, periodo, pago);
   loadProducts();
   closeStatusForm();
 });
@@ -240,18 +248,22 @@ function closeStatusForm() {
   statusForm.classList.add('hidden');
   clienteInput.value = '';
   telefonoInput.value = ''; // Limpiar el campo de teléfono
+  direccionInput.value = ''; // Limpiar el campo de dirección
   periodoInput.value = '';
+  pagoInput.checked = false; // Limpiar el campo de pago
 }
 
 // Desbloquear producto
 async function unlockProduct(id) {
   console.log("Desbloqueando producto con ID:", id); // Verificar desbloqueo
-  // Actualizar cliente, teléfono, periodo y estado en la base de datos
+  // Actualizar cliente, teléfono, periodo, dirección y estado en la base de datos
   await window.api.updateProduct(id, {
     estado: 'Disponible',
     cliente: '',
     telefono: '', // Limpiar el campo de teléfono
-    periodo: ''
+    direccion: '', // Limpiar el campo de dirección
+    periodo: '',
+    pago: false // Limpiar el campo de pago
   });
 
   // Recargar productos para reflejar los cambios en la tabla

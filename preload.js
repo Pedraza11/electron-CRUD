@@ -6,6 +6,6 @@ contextBridge.exposeInMainWorld('api', {
   addProduct: (product) => ipcRenderer.invoke('add-product', product),
   updateProduct: (id, product) => ipcRenderer.invoke('update-product', id, product),
   deleteProduct: (id) => ipcRenderer.invoke('delete-product', id),
-  updateStatus: (id, cliente, telefono, periodo) => ipcRenderer.invoke('update-status', id, cliente, telefono, periodo),
+  updateStatus: (id, cliente, telefono, direccion, periodo, pago) => ipcRenderer.invoke('update-status', id, cliente, telefono, direccion, periodo, pago),
   unlockProduct: (id) => ipcRenderer.invoke('unlock-product', id)
 });

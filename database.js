@@ -19,6 +19,8 @@ knex.schema.hasTable('productos').then(async (exists) => {
       table.string('cliente'); // Cliente
       table.string('telefono'); // Teléfono del cliente
       table.string('periodo'); // Periodo de préstamo
+      table.string('direccion'); // Dirección del cliente
+      table.boolean('pago').defaultTo(false); // Estado de pago
     });
     console.log('Tabla "productos" creada.');
   } else {
@@ -37,6 +39,20 @@ knex.schema.hasTable('productos').then(async (exists) => {
         table.string('periodo'); // Periodo de préstamo
       });
       console.log('Columna "periodo" agregada a la tabla "productos".');
+    }
+    if (!tableInfo.direccion) {
+      // Si la columna 'direccion' no existe, la agregamos
+      await knex.schema.table('productos', (table) => {
+        table.string('direccion'); // Dirección del cliente
+      });
+      console.log('Columna "direccion" agregada a la tabla "productos".');
+    }
+    if (!tableInfo.pago) {
+      // Si la columna 'pago' no existe, la agregamos
+      await knex.schema.table('productos', (table) => {
+        table.boolean('pago').defaultTo(false); // Estado de pago
+      });
+      console.log('Columna "pago" agregada a la tabla "productos".');
     }
   }
 });
