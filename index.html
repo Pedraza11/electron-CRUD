@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css">
 </head>
+
 <body>
   <h1>Gestión de productos</h1>
 
@@ -26,7 +28,7 @@
       <label for="searchInput">Buscar Producto:</label>
       <input id="searchInput" type="text" placeholder="Buscar..." oninput="searchProducts()">
     </div>
-    
+
     <div class="filter">
       <button id="vencimientoButton" onclick="filterByExpiration()">Filtrar por Vencimiento</button>
       <button id="listarButton" onclick="listarProductos()">Listar Todos</button>
@@ -48,11 +50,42 @@
         <th>Periodo</th>
         <th>Dirección</th>
         <th>Pago</th>
+        <th>socio</th>
         <th>Acciones</th>
       </tr>
     </thead>
     <tbody></tbody>
   </table>
+
+  <div id="client-management">
+    <h2>Gestión de Clientes</h2>
+    <div style="display: flex; gap: 10px; align-items: center;">
+        <input
+            type="text"
+            id="client-search"
+            placeholder="Buscar por nombre, teléfono o DNI"
+            style="padding: 10px; width: 300px; border: 1px solid #ccc; border-radius: 5px;"
+        />
+        <button id="add-client-btn">Agregar Cliente</button>
+    </div>
+    <table id="cliente-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>DNI</th>
+                <th>Teléfono</th>
+                <th>Garante</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Aquí se llenará la lista de clientes -->
+        </tbody>
+    </table>
+</div>
+
 
   <!-- Tabla de resumen de cantidades por producto -->
   <h2>Resumen de Cantidad por Producto</h2>
@@ -68,18 +101,31 @@
     </tbody>
   </table>
 
+
   <!-- Formulario de cambio de estado -->
   <div id="status-form" class="modal hidden">
     <h2>Cambiar estado</h2>
-    <input type="text" id="cliente" placeholder="Nombre del Cliente" required />
-    <input type="text" id="telefono" placeholder="Teléfono del Cliente" required />
-    <input type="text" id="direccion" placeholder="Dirección del Cliente" required />
+    <div>
+      <input type="text" id="cliente-dni" placeholder="DNI del Cliente" required />
+      <button id="load-client-data" style="margin-left: 10px;">Cargar Datos</button>
+    </div>
+    <input type="text" id="cliente" placeholder="Nombre del Cliente" required readonly />
+    <input type="text" id="telefono" placeholder="Teléfono del Cliente" required readonly />
+    <input type="text" id="direccion" placeholder="Dirección del Cliente" required readonly />
+    <select id="socio" required>
+      <option value="">Seleccionar socio</option>
+      <option value="rodolfo">rodolfo</option>
+      <option value="presidente">presidente</option>
+      <option value="hugo">hugo</option>
+    </select>
     <input type="text" id="periodo" placeholder="Periodo de préstamo" required />
     <label for="pago">Pago realizado:</label>
     <input type="checkbox" id="pago" />
     <button id="save-status">Guardar</button>
     <button id="cancel-status">Cancelar</button>
   </div>
+
+
 
   <!-- Modal de detalles de producto -->
   <div id="product-details-modal" class="modal hidden">
@@ -92,11 +138,26 @@
       <p><strong>Cliente:</strong> <span id="detail-client"></span></p>
       <p><strong>Teléfono:</strong> <span id="detail-phone"></span></p>
       <p><strong>Periodo:</strong> <span id="detail-period"></span></p>
+      <p><strong>socio:</strong> <span id="detail-socio"></span></p>
       <button id="close-details">Cerrar</button>
     </div>
   </div>
+  <h2>Ganancias Mensuales</h2>
+  <table id="monthly-earnings-table">
+    <thead>
+      <tr>
+        <th>Mes</th>
+        <th>Ganancias</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se llenarán los datos de las ganancias mensuales -->
+    </tbody>
+  </table>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
-  <script src="renderer.js"></script>
+  <script src="render.js"></script>
 </body>
+
 </html>

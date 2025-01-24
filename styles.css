@@ -289,3 +289,54 @@ table td button.unlock:hover {
   transform: translateY(2px); 
   box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1); 
 }
+
+/* Estilo del botón "Agregar Cliente" */
+#add-client-btn {
+  background-color: #28a745; /* Verde atractivo */
+  color: white; /* Texto en blanco */
+  font-size: 16px; /* Tamaño de fuente */
+  padding: 10px 20px; /* Espaciado interno */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Icono de mano al pasar */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Efecto suave */
+}
+
+/* Efecto hover (al pasar el cursor) */
+#add-client-btn:hover {
+  background-color: #218838; /* Verde más oscuro */
+  transform: translateY(-2px); /* Mover ligeramente hacia arriba */
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Sombra más intensa */
+}
+
+/* Efecto activo (al hacer clic) */
+#add-client-btn:active {
+  background-color: #1e7e34; /* Verde aún más oscuro */
+  transform: translateY(1px); /* Mover ligeramente hacia abajo */
+}
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23333" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 10px;
+}
+
+select:focus {
+  border-color: #4c63af;
+  outline: none;
+}
+
+option {
+  padding: 10px;
+}
